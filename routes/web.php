@@ -13,6 +13,7 @@ use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\ObatController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,3 +66,12 @@ Route::get('/getChartTransaksi/{id}', [DashboardController::class, 'getChartTran
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/pdf', [PdfController::class, 'index']);
 
+
+Route::get('/mig', function(){
+    Artisan::call('migrate:fresh');
+    Artisan::call('db:seed');
+});
+
+Route::get('/cc', function(){
+    Artisan::call('config:clear');
+});
