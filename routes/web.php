@@ -67,11 +67,11 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/pdf', [PdfController::class, 'index']);
 
 
-Route::get('/mig', function(){
+Route::get('/migrate', function(){
     Artisan::call('migrate:fresh');
     Artisan::call('db:seed');
 });
 
-Route::get('/cc', function(){
+Route::get('/configClear', function(){
     Artisan::call('config:clear');
 });
